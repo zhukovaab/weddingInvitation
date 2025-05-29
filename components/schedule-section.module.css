@@ -1,0 +1,233 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  padding: 5rem 1rem;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.decorElement {
+  position: absolute;
+  opacity: 0.1;
+}
+
+.decorSprout {
+  top: 10rem;
+  left: 2.5rem;
+  height: 8rem;
+  width: 8rem;
+  color: var(--green-600);
+}
+
+.decorFlower {
+  bottom: 10rem;
+  right: 2.5rem;
+  height: 8rem;
+  width: 8rem;
+  color: var(--green-600);
+}
+
+.container {
+  max-width: 56rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-family: var(--font-cormorant);
+  text-align: center;
+  color: var(--green-800);
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+.timeline {
+  position: relative;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 0.125rem;
+  background-color: var(--green-200);
+  transform: translateX(-0.0625rem);
+}
+
+@media (min-width: 768px) {
+  .timelineLine {
+    left: 50%;
+  }
+}
+
+.timelineEvents {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.timelineEvent {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .timelineEvent {
+    flex-direction: row;
+  }
+
+  .timelineEventReverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.eventContent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-right: 2rem;
+  padding-left: 0;
+  padding-left: 4rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .eventContent {
+    width: 50%;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    padding-left: 0;
+  }
+
+  .eventContentReverse {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: 2rem;
+  }
+}
+
+.eventCard {
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--green-100);
+  max-width: 24rem;
+}
+
+.eventTitle {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-family: var(--font-cormorant);
+  color: var(--green-700);
+  margin-bottom: 0.5rem;
+}
+
+.eventDescription {
+  color: #4b5563; /* gray-600 */
+}
+
+.timelineDot {
+  position: absolute;
+  left: 1rem;
+  top: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--green-500);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-50%);
+}
+
+@media (min-width: 768px) {
+  .timelineDot {
+    left: auto;
+    right: 0;
+    transform: translateX(50%) translateY(-50%);
+  }
+
+  .timelineDotReverse {
+    right: auto;
+    left: 0;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+.dotIcon {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.eventTime {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 4rem;
+  padding-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .eventTime {
+    width: 50%;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .eventTimeReverse {
+    justify-content: flex-end;
+    padding-left: 0;
+    padding-right: 2rem;
+  }
+}
+
+.timeWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.clockIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.5rem;
+  color: var(--green-500);
+}
+
+.timeText {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  color: var(--green-700);
+}
+
+@media (max-width: 768px) {
+  .decorElement {
+    display: none;
+  }
+}

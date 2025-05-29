@@ -1,0 +1,249 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 3.5rem;
+  overflow: hidden;
+  background-color: var(--green-50);
+}
+
+.decorElement {
+  position: absolute;
+  opacity: 0.2;
+}
+
+.decorLeaf1 {
+  top: 5rem;
+  left: 2.5rem;
+}
+
+.decorLeaf2 {
+  bottom: 5rem;
+  right: 2.5rem;
+}
+
+.decorHeart {
+  top: 33%;
+  right: 25%;
+}
+
+.decorFlower1 {
+  top: 25%;
+  left: 25%;
+}
+
+.decorFlower2 {
+  bottom: 25%;
+  right: 33%;
+}
+
+.decorSprout {
+  bottom: 8rem;
+  left: 33%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.content {
+  text-align: center;
+  max-width: 56rem;
+}
+
+.iconWrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.heartIcon {
+  height: 4rem;
+  width: 4rem;
+  margin: 0 auto;
+  color: var(--green-600);
+  fill: var(--green-200);
+}
+
+.leafIconLeft {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  height: 2rem;
+  width: 2rem;
+  color: var(--green-600);
+  transform: rotate(-45deg);
+}
+
+.leafIconRight {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  height: 2rem;
+  width: 2rem;
+  color: var(--green-600);
+  transform: rotate(45deg);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: var(--green-800);
+  font-family: var(--font-cormorant);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+.title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-family: var(--font-cormorant);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--green-800);
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+}
+
+.dateWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  color: var(--green-700);
+}
+
+.dateText {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.imageFrame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 12px solid transparent;
+}
+
+.frameLeaf {
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  color: var(--green-500);
+  opacity: 0.7;
+}
+
+.frameLeafTopLeft {
+  top: 0;
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+.frameLeafTopRight {
+  top: 0;
+  right: 0;
+  transform: rotate(45deg);
+}
+
+.frameLeafBottomLeft {
+  bottom: 0;
+  left: 0;
+  transform: rotate(-135deg);
+}
+
+.frameLeafBottomRight {
+  bottom: 0;
+  right: 0;
+  transform: rotate(135deg);
+}
+
+.ctaWrapper {
+  margin-top: 3rem;
+}
+
+.ctaLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ctaButton {
+  padding: 0.75rem 2rem;
+  background-color: var(--green-600);
+  color: white;
+  border-radius: 9999px;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.ctaButton:hover {
+  background-color: var(--green-700);
+}
+
+.bottomBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2rem;
+  background: linear-gradient(to right, var(--green-100), var(--green-200), var(--green-100));
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .decorElement {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .decorHeart,
+  .decorFlower1,
+  .decorFlower2,
+  .decorSprout {
+    display: none;
+  }
+}

@@ -1,0 +1,49 @@
+.footer {
+  position: relative;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--green-100);
+}
+
+.decorLeafLeft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 6rem;
+  height: 6rem;
+  opacity: 0.2;
+}
+
+.decorLeafRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 6rem;
+  height: 6rem;
+  opacity: 0.2;
+}
+
+.leafIconLeft {
+  height: 100%;
+  width: 100%;
+  color: var(--green-600);
+  transform: rotate(-45deg);
+}
+
+.leafIconRight {
+  height: 100%;
+  width: 100%;
+  color: var(--green-600);
+  transform: rotate(45deg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #6b7280; /* gray-500 */
+}

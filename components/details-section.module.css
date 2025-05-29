@@ -1,0 +1,169 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  padding: 5rem 1rem;
+  background-color: var(--green-50);
+}
+
+.decorElement {
+  position: absolute;
+  opacity: 0.1;
+}
+
+.decorTree {
+  top: 5rem;
+  right: 2.5rem;
+  height: 8rem;
+  width: 8rem;
+  color: var(--green-700);
+}
+
+.decorPalm {
+  bottom: 5rem;
+  left: 2.5rem;
+  height: 8rem;
+  width: 8rem;
+  color: var(--green-700);
+}
+
+.container {
+  position: relative;
+  max-width: 56rem;
+  margin: 0 auto;
+  z-index: 20;
+}
+
+.title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-family: var(--font-cormorant);
+  text-align: center;
+  color: var(--green-800);
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+.venuesGrid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .venuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.venueCard {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--green-100);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.venueCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.venueHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.venueIconWrapper {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--green-100);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.venueIcon {
+  color: var(--green-600);
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.venueTitle {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-family: var(--font-cormorant);
+  color: var(--green-700);
+}
+
+.venueDetails {
+  margin-left: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.venueInfo {
+  display: flex;
+  align-items: center;
+  color: #4b5563; /* gray-700 */
+}
+
+.venueInfoIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.5rem;
+  color: var(--green-500);
+}
+
+.venueDescription {
+  color: #4b5563; /* gray-600 */
+  margin-top: 1rem;
+  flex: 1;
+}
+
+.venueMapLink {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--green-600);
+  color: white;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.venueMapLink:hover {
+  background-color: var(--green-700);
+}
+
+.mapTitle {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-family: var(--font-cormorant);
+  text-align: center;
+  color: var(--green-700);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .decorElement {
+    display: none;
+  }
+}

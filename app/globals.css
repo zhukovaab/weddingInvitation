@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 240, 249, 244;
+  --background-end-rgb: 229, 244, 235;
+  --green-50: #f0f9f4;
+  --green-100: #dcf0e4;
+  --green-200: #bce0ca;
+  --green-300: #92c9aa;
+  --green-400: #65ad85;
+  --green-500: #488f68;
+  --green-600: #3a7454;
+  --green-700: #325e46;
+  --green-800: #2c4c3a;
+  --green-900: #264032;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.font-serif {
+  font-family: var(--font-cormorant);
+}
+
+.font-sans {
+  font-family: var(--font-inter);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 0.5rem;
+}
