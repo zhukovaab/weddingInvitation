@@ -14,7 +14,26 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Свадьба Георгия и Анастасии",
   description: "Приглашение на свадьбу Георгия и Анастасии, которая состоится 14 июня в Москве",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  openGraph: {
+      title: "Свадьба Георгия и Анастасии",
+      description: "Приглашение на свадьбу Георгия и Анастасии, которая состоится 14 июня в Москве",
+      type: "website",
+      images: [
+        {
+          url: "https://wedding-invitation-rho-rust.vercel.app/images/we.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Приглашение на свадьбу",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Приглашение на свадьбу",
+      description: "Вы приглашены на нашу свадьбу! Нажмите, чтобы узнать подробности.",
+      images: ["https://wedding-invitation-rho-rust.vercel.app/images/we.jpg"],
+    },
 }
 
 export default function RootLayout({

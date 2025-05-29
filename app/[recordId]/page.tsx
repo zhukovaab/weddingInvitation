@@ -29,37 +29,6 @@ async function getGuestData(recordId: string) {
   }
 }
 
-// Метаданные для Open Graph и SEO
-export async function generateMetadata({ params }: { params: { recordId: string } }): Promise<Metadata> {
-  // При необходимости можно получить данные гостя для персонализации метаданных
-  // const guestData = await getGuestData(params.recordId)
-
-  return {
-    title: "Приглашение на свадьбу",
-    description: "Вы приглашены на нашу свадьбу! Нажмите, чтобы узнать подробности.",
-    openGraph: {
-      title: "Приглашение на свадьбу",
-      description: "Вы приглашены на нашу свадьбу! Нажмите, чтобы узнать подробности.",
-      url: `https://wedding-invitation-rho-rust.vercel.app/${params.recordId}`,
-      type: "website",
-      images: [
-        {
-          url: "https://wedding-invitation-rho-rust.vercel.app/images/we.jpg",
-          width: 1200,
-          height: 630,
-          alt: "Приглашение на свадьбу",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Приглашение на свадьбу",
-      description: "Вы приглашены на нашу свадьбу! Нажмите, чтобы узнать подробности.",
-      images: ["https://wedding-invitation-rho-rust.vercel.app/images/we.jpg"],
-    },
-  }
-}
-
 export default async function GuestPage({ params }: { params: { recordId: string } }) {
   const { recordId } = params
   const guestData = await getGuestData(recordId)
