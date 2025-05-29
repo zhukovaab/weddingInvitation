@@ -1,26 +1,28 @@
-"use client"
-import { motion } from "framer-motion"
-import { Calendar, Clock, MapPin, TreePine, Palmtree } from "lucide-react"
-import BotanicalPattern from "./botanical-pattern"
-import dynamic from "next/dynamic"
-import styles from "./details-section.module.css"
+"use client";
+import { motion } from "framer-motion";
+import { Calendar, Clock, MapPin, TreePine, Palmtree } from "lucide-react";
+import BotanicalPattern from "./botanical-pattern";
+import dynamic from "next/dynamic";
+import styles from "./details-section.module.css";
 
 // Dynamically import the Yandex map component to avoid SSR issues
 const YandexMapComponent = dynamic(() => import("@/components/yandex-map"), {
   ssr: false,
-  loading: () => <div className="h-96 bg-green-100 animate-pulse rounded-lg"></div>,
-})
+  loading: () => (
+    <div className="h-96 bg-green-100 animate-pulse rounded-lg"></div>
+  ),
+});
 
 type VenueImage = {
-  src: string
-  alt: string
-  title: string
-  description: string
-}
+  src: string;
+  alt: string;
+  title: string;
+  description: string;
+};
 
 type DetailsSectionProps = {
-  mounted: boolean
-}
+  mounted: boolean;
+};
 
 export default function DetailsSection({ mounted }: DetailsSectionProps) {
   // Animation variants
@@ -32,12 +34,12 @@ export default function DetailsSection({ mounted }: DetailsSectionProps) {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  }
+  };
 
   const floatingAnimation = {
     y: [0, -10, 0],
@@ -47,7 +49,7 @@ export default function DetailsSection({ mounted }: DetailsSectionProps) {
       repeatType: "reverse" as const,
       ease: "easeInOut",
     },
-  }
+  };
 
   const rotateAnimation = {
     rotate: [0, 10, 0, -10, 0],
@@ -56,7 +58,7 @@ export default function DetailsSection({ mounted }: DetailsSectionProps) {
       repeat: Number.POSITIVE_INFINITY,
       ease: "easeInOut",
     },
-  }
+  };
 
   return (
     <section id="details" className={styles.section}>
@@ -64,11 +66,17 @@ export default function DetailsSection({ mounted }: DetailsSectionProps) {
       <BotanicalPattern />
 
       {/* Decorative elements */}
-      <motion.div className={`${styles.decorElement} ${styles.decorTree}`} animate={rotateAnimation}>
+      <motion.div
+        className={`${styles.decorElement} ${styles.decorTree}`}
+        animate={rotateAnimation}
+      >
         <TreePine className="h-32 w-32 text-green-700" />
       </motion.div>
 
-      <motion.div className={`${styles.decorElement} ${styles.decorPalm}`} animate={floatingAnimation}>
+      <motion.div
+        className={`${styles.decorElement} ${styles.decorPalm}`}
+        animate={floatingAnimation}
+      >
         <Palmtree className="h-32 w-32 text-green-700" />
       </motion.div>
 
@@ -104,7 +112,8 @@ export default function DetailsSection({ mounted }: DetailsSectionProps) {
             viewport={{ once: true }}
             whileHover={{
               scale: 1.03,
-              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+              boxShadow:
+                "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
             }}
           >
             <div className={styles.venueHeader}>
@@ -126,7 +135,7 @@ export default function DetailsSection({ mounted }: DetailsSectionProps) {
                 Торжественная церемония бракосочетания пройдет в Таганском ЗАГСе
               </p>
               <a
-                href="https://yandex.ru/maps/-/CDqZQXLG"
+                href="https://yandex.ru/maps/-/CHCxqVjL"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.venueMapLink}
@@ -147,7 +156,8 @@ export default function DetailsSection({ mounted }: DetailsSectionProps) {
             viewport={{ once: true }}
             whileHover={{
               scale: 1.03,
-              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+              boxShadow:
+                "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
             }}
           >
             <div className={styles.venueHeader}>
@@ -159,17 +169,19 @@ export default function DetailsSection({ mounted }: DetailsSectionProps) {
             <div className={styles.venueDetails}>
               <p className={styles.venueInfo}>
                 <Clock className={styles.venueInfoIcon} />
-                14 июня, 16:00
+                14 июня, 15:30
               </p>
               <p className={styles.venueInfo}>
                 <MapPin className={styles.venueInfoIcon} />
-                Теплоход "Крокус", Москва Сити
+                Теплоход "Крокус", причал<br/>"Национальный центр Россия"
               </p>
               <p className={styles.venueDescription}>
-                Празднование свадьбы пройдет на теплоходе "Крокус". Место встречи - Москва Сити
+                Празднование свадьбы пройдет на теплоходе "Крокус"
+                <br />
+                Место встречи - Москва Сити, причал "Национальный центр Россия"
               </p>
               <a
-                href="https://yandex.ru/maps/-/CDqZQXwC"
+                href="https://yandex.ru/maps/-/CHCxmK~9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.venueMapLink}
@@ -194,5 +206,5 @@ export default function DetailsSection({ mounted }: DetailsSectionProps) {
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

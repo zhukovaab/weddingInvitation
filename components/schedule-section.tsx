@@ -147,7 +147,7 @@ export default function ScheduleSection({ events }: ScheduleSectionProps) {
                   </div>
                   {/* Timeline dot */}
                   <motion.div
-                    className={`absolute left-0 md:left-auto ${index % 2 === 0 ? "md:-left-5" : "md:-right-5"} top-6 md:translate-x-1/2 md:-translate-y-0 -translate-y-1/2 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center z-10 shadow-md`}
+                    className={`absolute left-0 ${index % 2 === 0 ? "md:-left-5" : "md:-right-5 md:left-auto"} top-6 md:translate-x-1/2 md:-translate-y-0 -translate-y-1/2 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center z-10 shadow-md`}
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{
@@ -165,11 +165,11 @@ export default function ScheduleSection({ events }: ScheduleSectionProps) {
                 <div
                   className={`md:w-1/2 flex items-start justify-start pl-16 md:pr-0 pt-2  ${
                     index % 2 === 0
-                      ? "md:justify-end md:pr-8 md:pt-0"
-                      : "md:justify-start md:pl-8 md:pt-0"
+                      ? "md:justify-end md:pr-8 md:pt-8"
+                      : "md:justify-start md:pl-8 md:pt-8"
                   }`}
                 >
-                  <div className="flex items-center md:pt-[calc(1.75rem)]">
+                  <div className="flex items-center">
                     <Clock className="h-5 w-5 mr-2 text-green-500" />
                     <span className="text-lg font-medium text-green-700">
                       {event.time}

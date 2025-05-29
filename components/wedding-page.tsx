@@ -100,7 +100,7 @@ export default function WeddingPage({ guestData, recordId }: WeddingPageProps) {
     {
       time: "15:30",
       title: "Сбор гостей",
-      description: "Встреча гостей около теплохода 'Крокус', Москва Сити",
+      description: 'Встреча гостей около теплохода Крокус, причал "Национальный центр Россия"',
       icon: <Ship className="h-5 w-5" />,
     },
     {
@@ -115,18 +115,18 @@ export default function WeddingPage({ guestData, recordId }: WeddingPageProps) {
       description: "Изысканные блюда и напитки",
       icon: <Utensils className="h-5 w-5" />,
     },
-    {
-      time: "17:00",
-      title: "Развлекательная программа",
-      description: "Конкурсы, танцы и музыка",
-      icon: <Music className="h-5 w-5" />,
-    },
-    {
-      time: "21:00",
-      title: "Свадебный торт",
-      description: "Разрезание свадебного торта",
-      icon: <Cake className="h-5 w-5" />,
-    },
+    // {
+    //   time: "17:00",
+    //   title: "Развлекательная программа",
+    //   description: "Конкурсы, танцы и музыка",
+    //   icon: <Music className="h-5 w-5" />,
+    // },
+    // {
+    //   time: "21:00",
+    //   title: "Свадебный торт",
+    //   description: "Разрезание свадебного торта",
+    //   icon: <Cake className="h-5 w-5" />,
+    // },
     {
       time: "22:00",
       title: "Завершение вечера",

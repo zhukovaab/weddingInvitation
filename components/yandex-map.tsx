@@ -34,7 +34,7 @@ export default function YandexMap() {
 
         // ZAGS location marker
         const zagsPlacemark = new window.ymaps.Placemark(
-          [55.741, 37.654], // Tagansky ZAGS coordinates
+          [55.738951, 37.670282], // Tagansky ZAGS coordinates
           {
             balloonContentHeader: "<strong>Таганский ЗАГС</strong>",
             balloonContentBody: "Церемония бракосочетания<br/>14 июня, 13:15",
@@ -49,15 +49,15 @@ export default function YandexMap() {
 
         // Boat location marker
         const boatPlacemark = new window.ymaps.Placemark(
-          [55.749, 37.539], // Moscow City area coordinates
+          [55.748709, 37.546673], // Moscow City area coordinates
           {
             balloonContentHeader: '<strong>Теплоход "Крокус"</strong>',
-            balloonContentBody: "Празднование свадьбы<br/>14 июня, 16:00",
+            balloonContentBody: "Празднование свадьбы<br/>14 июня, 15:30",
             balloonContentFooter: "Место проведения праздничного банкета",
             hintContent: 'Теплоход "Крокус" - Празднование свадьбы',
           },
           {
-            preset: "islands#blueCircleIcon",
+            preset: "islands#blueHeartIcon",
             iconColor: "#2563eb",
           },
         )
