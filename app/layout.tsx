@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Cormorant_Garamond } from "next/font/google"
 import "./globals.css"
+import { ConfigProvider } from "antd"
 
 const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter" })
 const cormorant = Cormorant_Garamond({
@@ -23,7 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className="scroll-smooth">
-      <body className={`${inter.variable} ${cormorant.variable} font-sans bg-green-50 min-h-screen`}>{children}</body>
+      <body className={`${inter.variable} ${cormorant.variable} font-sans bg-green-50 min-h-screen`}><ConfigProvider
+    theme={{
+      token: {
+        colorPrimary: '#488f68',
+        fontFamily  : 'var(--font-inter)',
+      },
+    }}
+  >{children}</ConfigProvider></body>
     </html>
   )
 }

@@ -2,9 +2,10 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Leaf, Sprout, CheckCircle2, AlertCircle } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import BotanicalPattern from "./botanical-pattern";
 import { useEffect } from "react";
+import { Checkbox, Input, Radio } from "antd";
 
 type FormData = {
   fullName: string;
@@ -121,7 +122,9 @@ export default function RsvpSection({
   }, [guestData, reset]);
 
   const attendance = watch("attendance");
+  console.log("🚀 ~ attendance:", attendance);
   const hasEscort = watch("hasEscort");
+  const zagsAttendance = watch("zagsAttendance");
 
   // Animation variants
   const containerVariants = {
@@ -330,22 +333,24 @@ export default function RsvpSection({
             >
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div>
-                  <label
-                    htmlFor="fullName"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     ФИО
                   </label>
-                  <input
-                    id="fullName"
-                    type="text"
-                    className={`w-full px-4 py-2 border ${
-                      errors.fullName ? "border-red-300" : "border-gray-300"
-                    } rounded-md focus:outline-none focus:ring-2 focus:ring-green-500`}
-                    placeholder="Иванов Иван Иванович"
-                    {...register("fullName", {
-                      required: "Пожалуйста, укажите ваше ФИО",
-                    })}
+                  <Controller
+                    name="fullName"
+                    control={control}
+                    rules={{ required: "Пожалуйста, укажите ваше ФИО" }}
+                    render={({ field }) => (
+                      <Input
+                        {...field}
+                        id="fullName"
+                        type="text"
+                        className={`w-full px-4 py-2 border ${
+                          errors.fullName ? "border-red-300" : "border-gray-300"
+                        } rounded-md focus:outline-none focus:ring-2 focus:ring-green-500`}
+                        placeholder="Иванов Иван"
+                      />
+                    )}
                   />
                   <AnimatePresence>
                     {errors.fullName && (
@@ -368,36 +373,28 @@ export default function RsvpSection({
                     Сможете ли вы присутствовать?
                   </label>
                   <div className="space-y-2">
-                    <div className="flex items-center">
-                      <input
-                        id="attendance-yes"
-                        type="radio"
-                        value="yes"
-                        className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300"
-                        {...register("attendance")}
-                      />
-                      <label
-                        htmlFor="attendance-yes"
-                        className="ml-2 block text-sm text-gray-700"
-                      >
-                        Да, я буду присутствовать
-                      </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        id="attendance-no"
-                        type="radio"
-                        value="no"
-                        className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300"
-                        {...register("attendance")}
-                      />
-                      <label
-                        htmlFor="attendance-no"
-                        className="ml-2 block text-sm text-gray-700"
-                      >
-                        К сожалению, я не смогу присутствовать
-                      </label>
-                    </div>
+                    <Controller
+                      name="attendance"
+                      control={control}
+                      render={({ field }) => (
+                        <Radio.Group
+                          className="flex flex-col gap-2"
+                          options={[
+                            {
+                              value: "yes",
+                              label: "Да, я буду присутствовать",
+                              id: "attendance-yes",
+                            },
+                            {
+                              value: "no",
+                              label: "К сожалению, я не смогу присутствовать",
+                              id: "attendance-no",
+                            },
+                          ]}
+                          {...field}
+                        />
+                      )}
+                    />
                   </div>
                 </div>
 
@@ -409,7 +406,7 @@ export default function RsvpSection({
                       initial="hidden"
                       animate="visible"
                       exit="exit"
-                      className="overflow-hidden"
+                      // className="overflow-hidden"
                     >
                       <div className="space-y-6">
                         <div>
@@ -417,36 +414,30 @@ export default function RsvpSection({
                             Хотели ли вы присутствовать на церемонии в ЗАГСе?
                           </label>
                           <div className="space-y-2">
-                            <label className="flex items-center">
-                              <input
-                                id="zags-yes"
-                                type="radio"
-                                value="yes"
-                                className="peer sr-only"
-                                {...register("zagsAttendance")}
-                              />
-                              <div className="h-4 w-4 rounded-full border-2 border-green-300 mr-2 flex items-center justify-center transition-colors duration-200 peer-checked:border-green-500 peer-checked:bg-green-500 ">
-                                <div className="w-2.5 h-2.5 rounded-full bg-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200" />
-                              </div>
-                              <div className="text-sm text-gray-700 cursor-pointer select-none">
-                                Да, хотел бы присутствовать на церемонии
-                              </div>
-                            </label>
-                            <label className="flex items-center">
-                              <input
-                                id="zags-no"
-                                type="radio"
-                                value="no"
-                                className="peer sr-only"
-                                {...register("zagsAttendance")}
-                              />
-                              <div className="h-4 w-4 rounded-full border-2 border-green-300 mr-2 flex items-center justify-center transition-colors duration-200 peer-checked:border-green-500 peer-checked:bg-green-500 ">
-                                <div className="w-2.5 h-2.5 rounded-full bg-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200" />
-                              </div>
-                              <div className="text-sm text-gray-700 cursor-pointer select-none">
-                                Нет, приду только на празднование
-                              </div>
-                            </label>
+                            <Controller
+                              name="zagsAttendance"
+                              control={control}
+                              render={({ field }) => (
+                                <Radio.Group
+                                  className="flex flex-col gap-2"
+                                  options={[
+                                    {
+                                      value: "yes",
+                                      label:
+                                        "Да, хотел бы присутствовать на церемонии",
+                                      id: "zags-yes",
+                                    },
+                                    {
+                                      value: "no",
+                                      label:
+                                        "Нет, приду только на празднование",
+                                      id: "zags-no",
+                                    },
+                                  ]}
+                                  {...field}
+                                />
+                              )}
+                            />
                           </div>
                           <motion.p
                             className="mt-2 text-xs text-gray-500 italic"
@@ -460,38 +451,29 @@ export default function RsvpSection({
                             всех желающих на церемонии.
                           </motion.p>
                         </div>
-
                         {guestData?.canAddEscort && (
                           <div>
-                            <div className="flex items-center">
-                              <label className="relative flex items-center">
-                                <input
-                                  id="hasEscort"
-                                  type="checkbox"
-                                  className="peer sr-only"
-                                  {...register("hasEscort")}
-                                />
-                                <div className="h-5 w-5 border-2 border-green-300 rounded flex items-center justify-center mr-2 transition-colors peer-checked:bg-green-500 peer-checked:border-green-500">
-                                  <svg
-                                    className="w-3 h-3 text-white"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="3"
-                                      d="M5 13l4 4L19 7"
-                                    ></path>
-                                  </svg>
+                            <Controller
+                              name="hasEscort"
+                              control={control}
+                              render={({ field }) => (
+                                <div className="flex items-center">
+                                  <label className="relative flex items-center">
+                                    <Checkbox
+                                      id="hasEscort"
+                                      checked={field.value}
+                                      onChange={(e) =>
+                                        field.onChange(e.target.checked)
+                                      }
+                                      className="mr-2"
+                                    />
+                                    <div className="text-sm cursor-pointer">
+                                      Будет ли кто-то Вас сопровождать?
+                                    </div>
+                                  </label>
                                 </div>
-                                <div className="text-sm text-gray-700 cursor-pointer">
-                                  Будет ли кто-то Вас сопровождать?
-                                </div>
-                              </label>
-                            </div>
+                              )}
+                            />
 
                             <AnimatePresence>
                               {hasEscort && (
@@ -501,7 +483,7 @@ export default function RsvpSection({
                                   initial="hidden"
                                   animate="visible"
                                   exit="exit"
-                                  className="overflow-hidden"
+                                  // className="overflow-hidden"
                                 >
                                   <label
                                     htmlFor="escort"
@@ -509,16 +491,22 @@ export default function RsvpSection({
                                   >
                                     ФИО сопровождающего
                                   </label>
-                                  <input
-                                    type="text"
-                                    id="escort"
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                    placeholder="ФИО сопровождающего"
-                                    {...register("escort", {
+                                  <Controller
+                                    name="escort"
+                                    control={control}
+                                    rules={{
                                       required: hasEscort
                                         ? "Пожалуйста, укажите ФИО сопровождающего"
                                         : false,
-                                    })}
+                                    }}
+                                    render={({ field }) => (
+                                      <Input
+                                        {...field}
+                                        id="escort"
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                                        placeholder="ФИО сопровождающего"
+                                      />
+                                    )}
                                   />
                                   <AnimatePresence>
                                     {errors.escort && (
@@ -547,13 +535,19 @@ export default function RsvpSection({
                           >
                             Есть ли у вас аллергии или пищевые ограничения?
                           </label>
-                          <textarea
-                            id="allergies"
-                            rows={3}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                            placeholder="Укажите, если у вас есть аллергии или пищевые ограничения"
-                            {...register("allergies")}
-                          ></textarea>
+                          <Controller
+                            name="allergies"
+                            control={control}
+                            render={({ field }) => (
+                              <Input.TextArea
+                                {...field}
+                                id="allergies"
+                                rows={3}
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                                placeholder="Укажите, если у вас есть аллергии или пищевые ограничения"
+                              />
+                            )}
+                          />
                         </div>
 
                         <div>
@@ -567,45 +561,39 @@ export default function RsvpSection({
                             transition={{ delay: 0.2, staggerChildren: 0.05 }}
                           >
                             {alcoholOptions.map((option, index) => (
-                              <motion.div
-                                key={option}
-                                className="flex items-center"
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.05 }}
-                              >
-                                <label
-                                  htmlFor={`alcohol-${option}`}
-                                  className="relative flex items-center"
-                                >
-                                  <input
-                                    id={`alcohol-${option}`}
-                                    type="checkbox"
+                              <Controller
+                                key={index}
+                                name="alcoholPreferences"
+                                control={control}
+                                render={({ field }) => (
+                                  <Checkbox
+                                    key={option}
                                     value={option}
-                                    className="peer sr-only"
-                                    {...register("alcoholPreferences")}
-                                  />
-                                  <div className="h-5 w-5 border-2 border-green-300 rounded flex items-center justify-center mr-2 transition-colors peer-checked:bg-green-500 peer-checked:border-green-500">
-                                    <svg
-                                      className="w-3 h-3 text-white"
-                                      fill="none"
-                                      stroke="currentColor"
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="3"
-                                        d="M5 13l4 4L19 7"
-                                      ></path>
-                                    </svg>
-                                  </div>
-                                  <div className="text-sm text-gray-700 cursor-pointer">
-                                    {option}
-                                  </div>
-                                </label>
-                              </motion.div>
+                                    checked={field.value?.includes(option)}
+                                    onChange={(e) => {
+                                      const checked = e.target.checked;
+                                      const value = e.target.value;
+                                      if (checked) {
+                                        field.onChange([
+                                          ...(field.value || []),
+                                          value,
+                                        ]);
+                                      } else {
+                                        field.onChange(
+                                          (field.value || []).filter(
+                                            (v: string) => v !== value
+                                          )
+                                        );
+                                      }
+                                    }}
+                                    className="flex items-center"
+                                  >
+                                    <span className="text-sm text-gray-700">
+                                      {option}
+                                    </span>
+                                  </Checkbox>
+                                )}
+                              />
                             ))}
                           </motion.div>
                         </div>
@@ -621,13 +609,19 @@ export default function RsvpSection({
                   >
                     Дополнительные комментарии
                   </label>
-                  <textarea
-                    id="comments"
-                    rows={3}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                    placeholder="Если у вас есть дополнительные пожелания или вопросы"
-                    {...register("comments")}
-                  ></textarea>
+                  <Controller
+                    name="comments"
+                    control={control}
+                    render={({ field }) => (
+                      <Input.TextArea
+                        {...field}
+                        id="comments"
+                        rows={3}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        placeholder="Если у вас есть дополнительные пожелания или вопросы"
+                      />
+                    )}
+                  />
                 </div>
 
                 <div className="pt-4">
