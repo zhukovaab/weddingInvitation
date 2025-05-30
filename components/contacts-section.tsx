@@ -57,12 +57,12 @@ export default function ContactsSection({ contacts }: ContactsSectionProps) {
     <section
       id="contacts"
       className="relative min-h-screen py-20 px-4 bg-white"
-      style={{
-        backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
+      // style={{
+      //   backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      //   backgroundAttachment: "fixed",
+      // }}
     >
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-white/90"></div>
@@ -160,7 +160,7 @@ export default function ContactsSection({ contacts }: ContactsSectionProps) {
                   <Phone className="h-4 w-4" />
                   <span>{contact.phone}</span>
                 </motion.a>
-                <motion.a
+                {contact.telegram &&<motion.a
                   href={`https://t.me/${contact.telegram.substring(1)}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -170,7 +170,7 @@ export default function ContactsSection({ contacts }: ContactsSectionProps) {
                 >
                   <MessageCircle className="h-4 w-4" />
                   <span>{contact.telegram}</span>
-                </motion.a>
+                </motion.a>}
               </div>
             </motion.div>
           ))}

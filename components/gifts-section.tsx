@@ -149,7 +149,7 @@ export default function GiftsSection() {
             </h2>
             <div className="mb-4 bg-white p-4 inline-block rounded-lg border border-green-100">
               <Image
-                src="/placeholder.svg?height=200&width=200"
+                src="/images/qr.jpg?height=200&width=200"
                 alt="QR-код для перевода"
                 width={200}
                 height={200}
@@ -182,10 +182,10 @@ export default function GiftsSection() {
               <div>
                 <p className="text-sm text-gray-500">Номер телефона:</p>
                 <div className="flex items-center gap-2">
-                  <p className="font-medium">+7 (906) 076-88-56</p>
+                  <p className="font-medium">+7 (909) 158-15-78</p>
                   <motion.button
                     onClick={() => {
-                      navigator.clipboard.writeText("+79060768856");
+                      navigator.clipboard.writeText("+79091581578");
                       setIsCopied(true);
                       setTimeout(() => setIsCopied(false), 2000);
                     }}
@@ -210,7 +210,7 @@ export default function GiftsSection() {
               </div>
               <div>
                 <p className="text-sm text-gray-500">Получатель:</p>
-                <p className="font-medium">Георгий T.</p>
+                <p className="font-medium">Анастасия Ж.</p>
               </div>
               <div>
                 <p className="text-sm text-gray-500">Банк:</p>

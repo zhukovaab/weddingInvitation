@@ -122,9 +122,7 @@ export default function RsvpSection({
   }, [guestData, reset]);
 
   const attendance = watch("attendance");
-  console.log("🚀 ~ attendance:", attendance);
   const hasEscort = watch("hasEscort");
-  const zagsAttendance = watch("zagsAttendance");
 
   // Animation variants
   const containerVariants = {
@@ -211,7 +209,6 @@ export default function RsvpSection({
       },
     },
   };
-  console.log("RSVP Section Rendered", { ...register("hasEscort") });
   return (
     <section
       id="rsvp"
@@ -348,7 +345,7 @@ export default function RsvpSection({
                         className={`w-full px-4 py-2 border ${
                           errors.fullName ? "border-red-300" : "border-gray-300"
                         } rounded-md focus:outline-none focus:ring-2 focus:ring-green-500`}
-                        placeholder="Иванов Иван"
+                        placeholder="Иван Иванов"
                       />
                     )}
                   />

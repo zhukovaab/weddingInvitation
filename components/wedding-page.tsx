@@ -115,12 +115,12 @@ export default function WeddingPage({ guestData, recordId }: WeddingPageProps) {
       description: "Изысканные блюда и напитки",
       icon: <Utensils className="h-5 w-5" />,
     },
-    // {
-    //   time: "17:00",
-    //   title: "Развлекательная программа",
-    //   description: "Конкурсы, танцы и музыка",
-    //   icon: <Music className="h-5 w-5" />,
-    // },
+    {
+      time: "17:00",
+      title: "Развлекательная программа",
+      description: "Конкурсы, танцы и музыка",
+      icon: <Music className="h-5 w-5" />,
+    },
     // {
     //   time: "21:00",
     //   title: "Свадебный торт",
