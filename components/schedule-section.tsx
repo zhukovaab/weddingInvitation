@@ -57,12 +57,6 @@ export default function ScheduleSection({ events }: ScheduleSectionProps) {
     <section
       id="schedule"
       className="relative min-h-screen py-20 px-4 bg-white"
-      // style={{
-      //   backgroundImage: "url('/images/we.jpg?height=1080&width=1920')",
-      //   backgroundSize: "cover",
-      //   backgroundPosition: "center",
-      //   backgroundAttachment: "fixed",
-      // }}
     >
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-white/90"></div>

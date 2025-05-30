@@ -7,10 +7,10 @@ import LoadingScreen from "@/components/loading-screen"
 // Получение данных гостя из NocoDB API
 async function getGuestData(recordId: string) {
   try {
-    const response = await fetch(`https://app.nocodb.com/api/v2/tables/mnmhshwfwx45sd3/records/${recordId}`, {
+    const response = await fetch(`https://app.nocodb.com/api/v2/tables/mhf8qsv1aqou9i9/records/${recordId}`, {
       headers: {
         "Content-Type": "application/json",
-        "xc-token": "YwI2ziEpX2HsW9I0zAzNPsS0Fk_6EF-boUo_4G95",
+        "xc-token": "xvBld5ws2Lt7wpo4xSD4ltp_rpwttzdlPpf4B4Tn",
       },
       cache: "no-store",
     })

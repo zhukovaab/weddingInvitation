@@ -1,21 +1,23 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
+import { useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
-    ymaps: any
+    ymaps: any;
   }
 }
 
 export default function YandexMap() {
-  const mapRef = useRef<HTMLDivElement>(null)
-  const mapInstanceRef = useRef<any>(null)
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<any>(null);
+
 
   useEffect(() => {
     // Function to initialize the map
     const initMap = () => {
-      if (!window.ymaps || !mapRef.current) return
+      if (!window.ymaps || !mapRef.current) return;
 
       window.ymaps.ready(() => {
         // Create the map
@@ -27,10 +29,11 @@ export default function YandexMap() {
             controls: ["zoomControl", "fullscreenControl"],
           },
           {
-            scrollZoom: false, // Disable scroll zoom
             suppressMapOpenBlock: true, // Prevent map from blocking page scroll
-          },
-        )
+          }
+        );
+
+        map.behaviors.disable("scrollZoom");
 
         // ZAGS location marker
         const zagsPlacemark = new window.ymaps.Placemark(
@@ -44,8 +47,8 @@ export default function YandexMap() {
           {
             preset: "islands#redHeartIcon",
             iconColor: "#dc2626",
-          },
-        )
+          }
+        );
 
         // Boat location marker
         const boatPlacemark = new window.ymaps.Placemark(
@@ -59,50 +62,50 @@ export default function YandexMap() {
           {
             preset: "islands#blueHeartIcon",
             iconColor: "#2563eb",
-          },
-        )
+          }
+        );
 
         // Add markers to the map
-        map.geoObjects.add(zagsPlacemark)
-        map.geoObjects.add(boatPlacemark)
+        map.geoObjects.add(zagsPlacemark);
+        map.geoObjects.add(boatPlacemark);
 
         // Store map instance
-        mapInstanceRef.current = map
+        mapInstanceRef.current = map;
 
         // Set bounds to show both markers
         map.setBounds(map.geoObjects.getBounds(), {
           checkZoomRange: true,
           zoomMargin: 50,
-        })
-      })
-    }
+        });
+      });
+    };
 
     // Load Yandex Maps API if not already loaded
     if (!window.ymaps) {
-      const script = document.createElement("script")
-      script.src = `https://api-maps.yandex.ru/2.1/?apikey=9629cef8-0352-4cb7-a05b-a95088044046&lang=ru_RU`
-      script.async = true
-      script.onload = initMap
-      document.head.appendChild(script)
+      const script = document.createElement("script");
+      script.src = `https://api-maps.yandex.ru/2.1/?apikey=9629cef8-0352-4cb7-a05b-a95088044046&lang=ru_RU`;
+      script.async = true;
+      script.onload = initMap;
+      document.head.appendChild(script);
 
       return () => {
         // Cleanup script on unmount
         if (script.parentNode) {
-          script.parentNode.removeChild(script)
+          script.parentNode.removeChild(script);
         }
-      }
+      };
     } else {
-      initMap()
+      initMap();
     }
 
     // Cleanup map instance on unmount
     return () => {
       if (mapInstanceRef.current) {
-        mapInstanceRef.current.destroy()
-        mapInstanceRef.current = null
+        mapInstanceRef.current.destroy();
+        mapInstanceRef.current = null;
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <div

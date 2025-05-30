@@ -221,11 +221,11 @@ export default function WeddingPage({ guestData, recordId }: WeddingPageProps) {
       }
 
       // Submit the form data to NocoDB API
-      const response = await fetch(`https://app.nocodb.com/api/v2/tables/mnmhshwfwx45sd3/records`, {
+      const response = await fetch(`https://app.nocodb.com/api/v2/tables/mhf8qsv1aqou9i9/records`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          "xc-token": "YwI2ziEpX2HsW9I0zAzNPsS0Fk_6EF-boUo_4G95",
+          "xc-token": "xvBld5ws2Lt7wpo4xSD4ltp_rpwttzdlPpf4B4Tn",
         },
         body: JSON.stringify(apiData),
       })
