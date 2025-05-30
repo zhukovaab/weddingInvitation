@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FlowerIcon, Flower2, Gift, Copy, Check } from "lucide-react"
+import { FlowerIcon, Flower2, Gift, Copy, Check } from "lucide-react";
 import BotanicalPattern from "./botanical-pattern";
 import { useState } from "react";
 
@@ -42,8 +42,8 @@ export default function GiftsSection() {
     },
   };
 
-    const [isCopied, setIsCopied] = useState(false)
-
+  const [isCopiedLeft, setIsCopiedLeft] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   return (
     <section
@@ -145,22 +145,48 @@ export default function GiftsSection() {
             }}
           >
             <h2 className="text-xl font-serif text-green-700 mb-4">
-              Перевод по QR-коду
+              Реквизиты для перевода
             </h2>
-            <div className="mb-4 bg-white p-4 inline-block rounded-lg border border-green-100">
-              <Image
-                src="/images/qr.jpg?height=200&width=200"
-                alt="QR-код для перевода"
-                width={200}
-                height={200}
-                className="mx-auto"
-              />
+            <div className="space-y-3 text-left">
+              <div>
+                <p className="text-sm text-gray-500">Номер телефона:</p>
+                <div className="flex items-center gap-2">
+                  <p className="font-medium">+7 (906) 076-88-56</p>
+                  <motion.button
+                    onClick={() => {
+                      navigator.clipboard.writeText("+79060768856");
+                      setIsCopiedLeft(true);
+                      setTimeout(() => setIsCopied(false), 2000);
+                    }}
+                    className="p-1 text-green-600 hover:bg-green-100 rounded transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    title={isCopiedLeft ? "Скопировано!" : "Копировать номер"}
+                  >
+                    <motion.div
+                      initial={false}
+                      animate={{ scale: isCopied ? [1, 1.2, 1] : 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {isCopiedLeft ? (
+                        <Check className="h-4 w-4 text-green-600" />
+                      ) : (
+                        <Copy className="h-4 w-4" />
+                      )}
+                    </motion.div>
+                  </motion.button>
+                </div>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Получатель:</p>
+                <p className="font-medium">Георгий Т.</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Банк:</p>
+                <p className="font-medium">Альфа-Банк или Т-Банк</p>
+              </div>
             </div>
-            <p className="text-sm text-gray-600">
-              Отсканируйте QR-код для перевода через любое банковское приложение
-            </p>
           </motion.div>
-
           <motion.div
             className="bg-white p-6 rounded-lg shadow-md border border-green-100 text-center max-w-xs w-full"
             whileInView={{

@@ -15,6 +15,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://wedding-invitation-rho-rust.vercel.app'),
   title: "Свадьба Георгия и Анастасии",
   description:
     "Приглашение на свадьбу Георгия и Анастасии, которая состоится 14 июня в Москве",
