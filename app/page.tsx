@@ -166,7 +166,7 @@ export default function Home() {
       </div>
 
       {/* Decorative bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-r from-green-100 via-green-200 to-green-100 opacity-50"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-r from-green-100 via-green-200 to-green-100 opacity-50"></div>
     </div>
   )
 }

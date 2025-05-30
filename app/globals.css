@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'antd/dist/reset.css';
+@import "antd/dist/reset.css";
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -22,7 +22,21 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+html,
+textarea {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 .font-serif {
