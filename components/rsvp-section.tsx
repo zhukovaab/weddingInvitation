@@ -41,6 +41,8 @@ type RsvpSectionProps = {
   guestData?: GuestData;
 };
 
+const noop = () => {};
+
 export default function RsvpSection({
   isSubmitted,
   isSubmitting,
@@ -346,6 +348,7 @@ export default function RsvpSection({
                           errors.fullName ? "border-red-300" : "border-gray-300"
                         } rounded-md focus:outline-none focus:ring-2 focus:ring-green-500`}
                         placeholder="Иван Иванов"
+                        onChange={noop}
                       />
                     )}
                   />
