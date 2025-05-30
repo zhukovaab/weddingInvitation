@@ -15,7 +15,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://wedding-invitation-rho-rust.vercel.app'),
+  metadataBase: new URL("https://wedding-invitation-rho-rust.vercel.app"),
   title: "Свадьба Георгия и Анастасии",
   description:
     "Приглашение на свадьбу Георгия и Анастасии, которая состоится 14 июня в Москве",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Приглашение на свадьбу",
+    title: "Свадьба Георгия и Анастасии",
     description:
-      "Вы приглашены на нашу свадьбу! Нажмите, чтобы узнать подробности.",
+      "Приглашение на свадьбу Георгия и Анастасии, которая состоится 14 июня в Москве",
     images: ["/images/og.png"],
   },
 };
